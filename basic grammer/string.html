@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str="abaakdffggghhjjkkgfddooo123a33"
+        // Function1:calculate the length of the string
+        var stringlength=str.length;
+        alert('The string lenth is: '+stringlength+'\n');
+        // Function2:show specific character of the string
+        alert('The first character is: '+str.charAt(0)+'\n');
+        alert('The sixth character is: '+str.charAt(5)+'\n');
+        // Function3:judge whether a character exists
+        function judgeChar(num)
+        {
+            if(num==-1)
+            {
+                alert('This character does not exist in the string!\n');
+            }
+            else
+            {
+                alert('This character exists.The first coordinate is: '+index+'\n');
+            }
+        }
+        var index=str.indexOf('i');
+        judgeChar(index);
+        var index=str.indexOf('b');
+        judgeChar(index);
+        // Function4:show all the coordinates of a character
+        index=str.indexOf('a');
+        if(index==-1)
+        {
+            alert('This character does not exist in the string!\n');
+        }
+        else
+        {
+            var num2=1;
+            // num2 counts the number of the character
+            while(index!==-1)
+            {
+                alert('The '+num2+' coordinate is: '+index+'\n');
+                index=str.indexOf('a',index+1);
+                num2++;
+            }
+        }
+
+        // Function4:another version
+        function charCoordinate(str,ch)
+        {
+            var index2=str.indexOf(ch);
+            if(index2==-1)
+            {
+                alert('The character does not exist!');
+            }
+            else
+            {
+                var num3=1;
+            // num3 counts the number of the character
+            while(index2!==-1)
+            {
+                alert('The '+num3+' coordinate is: '+index2+'\n');
+                index2=str.indexOf(ch,index2+1);
+                num3++;
+            }
+            }
+        }
+        var target='a';
+        charCoordinate(str,target);
+        // Function5:replace specific string
+        alert('Initial String:\n'+str+'\n');
+        // replace 'g' into '22'
+        while(str.indexOf('g')!==-1)
+        {
+        str=str.replace('g','22');
+        }
+        alert('After the first replacement:\n'+str+'\n');
+        // replace 'kk' into '8'
+        while(str.indexOf('kk')!==-1)
+        {
+            str=str.replace('kk','8');
+
+        }
+        alert('After the second replacement:\n'+str+'\n');
+        // Function6:get sub-string
+        var n=5;
+        var substr1=str.substr(n,(str.length)-n);
+        alert(substr1);
+        // Function7:find out the most popular character and its times
+        str="abaakdffggghhjjkkgfddaaaaooo123a33"
+        var obj={};
+        for(var i=0;i<str.length;i++)
+        {
+            var ch=str.charAt(i);
+            // take each character of the string
+            if(obj[ch])
+            // if this character exists in the string, its value increases by 1;
+            {
+                obj[ch]++;
+            }
+            else
+            // if this character does not exist in the string before, the number of this character is 1 right now 
+            {
+                obj[ch]=1;
+            }
+        }
+        var max=0;
+        ch='';
+        for(var k in obj)
+        {
+            if(obj[k]>max)
+            {
+                max=obj[k];
+                ch=k;
+            }
+        }
+        alert('The most popular character is: '+ch+' \n');
+        alert('Its times is: '+max);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

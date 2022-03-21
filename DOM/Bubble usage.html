@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function()
+        {
+            var btn05=document.getElementById("btn05");
+            btn05.onclick=function()
+            // create new buttons to see whether bubbles work for new elements
+            {
+                var newbtn=document.createElement("button");
+                newbtn.className="btn";
+                newbtn.innerHTML="new button";
+                var body=document.getElementsByTagName("body")[0];// index[0] is important
+                body.appendChild(newbtn);
+            }
+            // write parent's function instead of every child's
+            document.body.onclick=function(event)
+            {
+                event=event||window.event;
+                if(event.target.className=="btn")
+                {
+                    alert("My classname is: btn");
+                }
+                else if(event.target.className=="another type")
+                {
+                    alert("My classname is: another type");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01" class="btn">btn01</button>
+    <button id="btn02" class="btn">btn02</button>
+    <button id="btn03" class="another type">btn03</button>
+    <button id="btn05" class="create new button">create new buttons</button>
+</body>
+</html>

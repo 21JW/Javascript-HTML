@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload=function()
+        {
+            var btn01=document.getElementById("btn01");
+            var btn02=document.getElementById("btn02");
+            var btn03=document.getElementById("btn03");
+
+            btn01.onclick=function()
+            {
+                // alert(location);
+                // show the website address 
+                location="https://www.youtube.com/"
+                // location.assign("https://www.youtube.com/"); is the same as the above
+            }
+            btn02.onclick=function()
+            {
+                location.reload();
+            }
+
+            btn03.onclick=function()
+            {
+                location="file:///F:/Javascript/Basic%20practice/BOM/location/history01.html"
+            }
+            btn05.onclick=function()
+            {
+                location.replace("https://www.youtube.com/");
+                // different from location and location.assign(); cannot go back or next
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">YouTube</button>
+    <button id="btn02">reload</button>
+    <button id="btn03">text website</button>
+    <button id="btn05">replace</button>
+
+    <br>
+    <br>
+    <input type="text">
+
+</body>
+</html>

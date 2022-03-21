@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function setbtn(btnstr,fun)
+        {
+            var btn=document.getElementById(btnstr);
+            btn.onclick=fun;
+        }
+        window.onload=function()
+        {
+            // add a new Node
+            setbtn("btn01",function()
+            {
+                // create a new Element"li"
+                var newCity=document.createElement("li");
+                newCity.innerHTML="Waterloo";
+                newCity.id="WA";
+                var city=document.getElementById("city");
+                // connet "li" with "city"
+                city.appendChild(newCity);
+            }
+            )
+
+            // insert a node before a sibling node (use insertbefore)
+            setbtn("btn02",function()
+            {
+                // create a new Element"li"
+                var newCity=document.createElement("li");
+                newCity.id="WA";
+                // alert(newCity.id);
+                // create a text
+                var Waterloo=document.createTextNode("Waterloo");
+                // connect li with text
+                newCity.appendChild(Waterloo);
+
+                var city=document.getElementById("city");
+                var NewYork=document.getElementById("NY");
+                // insert Waterloo before New York
+                city.insertBefore(newCity,NewYork);
+            }
+            )
+
+             // replace a node(using replaceChild function)
+             setbtn("btn03",function()
+            {
+                // create a new Element"li"
+                var newCity=document.createElement("li");
+                newCity.id="WA";
+                // alert(newCity.id);
+                // create a text
+                var Waterloo=document.createTextNode("Waterloo");
+                // connect li with text
+                newCity.appendChild(Waterloo);
+                var city=document.getElementById("city");
+
+                var NewYork=document.getElementById("NY");
+                // replace NewYork by Waterloo
+                city.replaceChild(newCity,NewYork);
+            }
+            )
+
+             // delete a node(using removeChild function)
+             setbtn("btn04",function()
+            {
+                var NewYork=document.getElementById("NY");
+                // delete NewYork (find its parent node first)
+                NewYork.parentNode.removeChild(NewYork);
+            }
+            )
+
+            // replace a node(using innerHTML)
+            setbtn("btn05",function()
+            {
+                var NewYork=document.getElementById("NY");
+                // delete NewYork (find its parent node first)
+                NewYork.innerHTML="Waterloo";
+            }
+            )
+        }
+
+    </script>
+</head>
+<body>
+
+    <div id='total'>
+        <div class='inner'>
+            <p>
+                Which city do you prefer?
+            </p>
+            <ul id='city'>
+                <li id='NY'>New York</li>
+                <li id='LD'>London</li>
+                <li id='PA'>Paris</li>
+                <li id='TO'>Toronto</li>
+            </ul>
+            
+        </div>
+    </div>
+
+    <div id="btnList">
+        <div><button id="btn01">Add a new node</button></div>
+        <div><button id="btn02">Add a new node before New York</button></div>
+        <div><button id="btn03">Replace a node</button></div>
+        <div><button id="btn04">Delete a node</button></div>
+        <div><button id="btn05">Replace a node (change innerHTML)</button></div>
+    </div>
+    
+</body>
+</html>

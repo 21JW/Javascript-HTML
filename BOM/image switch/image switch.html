@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #img1
+        {
+            width: 300px;
+            height: 225px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function()
+        {
+            var img1=document.getElementById("img1");
+            var btn01=document.getElementById("btn01");
+            var btn02=document.getElementById("btn02");
+            var arr=["melo.jpg","Jordan.jpg","Warriors.jpg","KD.jpg","Tatum.jpg"];
+            // timer is the return value of the setInterval function
+            var timer=0;
+            // set up a function that change images every second
+            btn01.onclick=function()
+            {
+                clearInterval(timer);
+                // a vital step:clear the timer before; otherwise, if you click btn01 many times,it will speed up and cannot stop 
+                var index=0;
+                timer=setInterval(function(){
+                index=(index+1)%arr.length;
+                img1.src=arr[index];
+             },1000); 
+            }
+            btn02.onclick=function()
+            {
+                clearInterval(timer);
+            }
+
+        }
+    </script>
+
+</head>
+<body>
+    <img src="Jordan.jpg" alt="" id="img1"/>
+    <br/><br/>
+    <button id="btn01">begin</button>
+    <button id="btn02">stop</button>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload=function()
+        {
+            var input01=document.getElementById("input01");
+            input01.onkeydown=function(event)
+            {
+                event=event||window.event;
+                // function:forbid number input
+                if(event.keyCode>=48&&event.keyCode<=57)
+                {
+                    return false;
+                    // cancel the default function
+                }
+            }            
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="input01">
+</body>
+</html>

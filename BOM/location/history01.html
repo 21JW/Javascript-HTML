@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload=function()
+        {
+           //history.length : shows how many websites we have visited
+           alert("How many websites we have visited:"+history.length+"\n");
+           var btn01=document.getElementById("btn01");
+           var btn02=document.getElementById("btn02");
+           btn01.onclick=function()
+           {
+               // Go to the last page we visited
+               history.back();
+           }
+           btn02.onclick=function()
+           {
+               // Go to the next page
+               history.forward();
+           }
+           //history.go(number) is the same as history.back() and history.forward()
+           //+1 means the next page; -1 means the last page
+        }
+    </script>
+</head>
+<body>
+    <h3>history</h3>
+    <button id="btn01">Go to the last page we visited</button>
+    <button id="btn02">Go to the next page</button>
+    <br/>
+    <br/>
+    <a href="https://www.youtube.com/">YouTube</a>
+</body>
+</html>

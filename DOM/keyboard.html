@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+       window.onload=function()
+       {
+           //var input01=document.getElementById("input01");
+           document.onkeydown=function(event)
+           {
+               event=event||window.event;
+               //function1: check whether "w" has been pressed
+               if(event.keyCode===87)
+               {
+                   alert("You press w");
+               }
+               //function2: check whether (altKey ctrlKey shiftKey) has been pressed
+               if(event.keyCode===89&&event.ctrlKey==true)
+               {
+                   alert("You press y and ctrl");
+               }
+           }
+       } 
+    </script>
+</head>
+<body>
+    <!-- <input type="text" id="input01"> -->
+</body>
+</html>

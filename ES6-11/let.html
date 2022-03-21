@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .box
+        {
+            height: 60px;
+            width: 100px;
+            background-color: gold;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            // 1. let and var
+            // let variables are local variables while var's are global 
+            let box=document.getElementsByClassName("box");
+            // if we use var instead of let, this function does not work. since i becomes 3, onclick function does not work
+            // for(var i=0;i<box.length;i++)
+            for(let i=0;i<box.length;i++)
+            {
+                box[i].onclick=function()
+                {
+                   box[i].style.background="red";
+                }
+            }
+
+            // example 2
+            {
+                let j=100;
+            }
+            // this does not work
+            alert(j);
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="box" id="box1"></div>
+    <br><br>
+    <div class="box" id="box2"></div>
+    <br><br>
+    <div class="box" id="box3"></div>
+</body>
+</html>

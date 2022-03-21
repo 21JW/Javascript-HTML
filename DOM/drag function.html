@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #box1
+        {
+            width: 50px;
+            height: 50px;
+            background-color: orangered;
+            /* vital step */
+            position: absolute;
+        }
+
+        #box2
+        {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            /* vital step */
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function()
+        {
+            var box1=document.getElementById("box1");
+            var box2=document.getElementById("box2");
+            function drag(obj)
+            {
+                obj.onmousedown=function(event)
+            // the element moves after we click it
+            {
+                // calculate the overlap
+                var OLX=event.clientX-obj.offsetLeft;
+                var OLY=event.clientY-obj.offsetTop;
+                document.onmousemove=function(event)
+                // set a function that the element follows the mouse
+                {
+                    event=event||window.event;
+                    obj.style.top=event.pageY-OLY+"px";
+                    obj.style.left=event.pageX-OLX+"px";
+                }
+                document.onmouseup=function()
+                // wrong example: box1.onmouseup=function() in this way box1 cannot stop in box2's area
+                {
+                    document.onmousemove=null;// let the element stop moving after mouseup
+                    document.onmouseup=null;
+                }
+            }   
+            }
+            drag(box1);
+            drag(box2);
+        }
+    </script>
+</head>
+<body>
+    text
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

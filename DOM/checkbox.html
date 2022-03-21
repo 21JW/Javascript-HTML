@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>options</title>
+    <script type="text/javascript">
+        window.onload=function()
+        {
+            // set a template
+            function SetBtn(Btnstr,fun)
+            {
+                btn=document.getElementById(Btnstr);
+                btn.onclick=fun
+            }
+
+            var items=document.getElementsByName("items");
+
+            // Function1:choose all function
+            SetBtn("chooseAllBtn",function()
+            {
+                for(var i=0;i<items.length;i++)
+                {
+                    items[i].checked=true;
+                }
+            });
+
+            // Function2:choose none function
+            SetBtn("chooseNoneBtn",function()
+            {
+                for(var i=0;i<items.length;i++)
+                {
+                    items[i].checked=false;
+                }
+            });
+
+            // Function3:choose the opposite function
+            SetBtn("chooseOppositeBtn",function()
+            {
+                for(var i=0;i<items.length;i++)
+                {
+                    items[i].checked=!items[i].checked;
+                }
+            });
+
+            // Function4:submit:show all the choices
+            SetBtn("submitBtn",function()
+            {
+                for(var i=0;i<items.length;i++)
+                {
+                    if(items[i].checked==true)
+                    alert(items[i].value);
+                }
+            });
+
+        }
+
+    </script>
+</head>
+<body>
+    <form method="post" action="">
+        What is your favourite sport?
+        <br>
+        <input type="checkbox" name="items" value="Football"/>Football
+        <input type="checkbox" name="items" value="Basketball"/>Basketball
+        <input type="checkbox" name="items" value="Tennis"/>Tennis
+        <input type="checkbox" name="items" value="Swimming"/>Swimming
+        <br/>
+        <input type="button" id="chooseAllBtn" value="choose all" />
+        <input type="button" id="chooseNoneBtn" value="choose none" />
+        <input type="button" id="chooseOppositeBtn" value="choose the opposite" />
+        <input type="button" id="submitBtn" value="submit" />
+
+    </form>
+    
+</body>
+</html>

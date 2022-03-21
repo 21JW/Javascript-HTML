@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        var name='johnny';
+        var email='kd@163.com';
+        var salary=99887;
+
+        var reg1=new RegExp(/\D+/);
+        var reg2=new RegExp(/\w+@\w+\.com/);
+        var reg3=new RegExp(/\d+/);
+
+        var result3=reg3.test(salary);
+
+        alert(result3);
+        alert(typeof(result3));
+
+            // if([reg1.test(name)==0])
+            //     {
+            //         alert("Please check the format of name!");
+            //     }
+            if([reg2.test(email)])
+                {
+                    alert("Please check the format of email!");
+                }
+            // if(result3==false)
+            if(reg3.test(salary)==false)
+                {
+                    alert("Please check the format of salary!Only accept integer!");
+                }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

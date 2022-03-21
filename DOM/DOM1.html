@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function setbtn(btnstr,fun)
+        // make a template
+        {
+            var btn=document.getElementById(btnstr);
+            btn.onclick=fun;
+        }
+        
+        window.onload=function()
+        {
+            // function1：getElementById
+            setbtn("btn01",function()
+            {
+                var NY=document.getElementById("NY");
+                alert(NY.innerHTML);
+            }
+            );
+            // function2：getElementsByTagName
+            setbtn("btn02",function()
+            {
+                var Lis1=document.getElementsByTagName("li");
+                var i;
+                for(i=0;i<Lis1.length;i++)
+                {
+                    alert(Lis1[i].innerHTML);
+                }
+            }
+            );
+      
+            // function3：getElementsByName
+            setbtn("btn03",function()
+            {
+                var inputs=document.getElementsByName("gender");
+                var i;
+                for(i=0;i<inputs.length;i++)
+                {
+                    alert(inputs[i].value);
+                    // alert(inputs[i].type);
+                }
+            }
+            );
+
+             // function4：getElementsByTagName(city)(different from function2)
+            //  funtion2：find elements by'li'
+            // function4:find elements by group ID
+            setbtn("btn04",function()
+            {
+                var city=document.getElementById('city');
+                var Lis2=city.getElementsByTagName('li');
+                for(var i=0;i<Lis2.length;i++)
+                {
+                    alert(Lis2[i].innerHTML);
+                }
+            }
+            );
+
+             // function5:children
+            setbtn("btn05",function()
+            {
+                var city=document.getElementById('city');
+                var chn=city.children;
+                for(var i=0;i<chn.length;i++)
+                {
+                    alert(chn[i].innerHTML);
+                }
+            }
+            );
+
+             // function6:first element child
+            setbtn("btn06",function()
+            {
+                var sports=document.getElementById('sports');
+                var firch=sports.firstElementChild;
+                var lastch=sports.lastElementChild;
+                alert(firch.innerHTML);
+                alert(lastch.innerHTML);
+            }
+            );
+
+            // Find New York's parent Node
+            setbtn("btn07",function()
+            {
+                var NY=document.getElementById("NY");
+                var parent=NY.parentNode;
+                alert(parent.innerText);
+                alert(parent.innerHTML);
+            }
+            );
+
+            // Find the previous and next sibling nodes
+            setbtn("btn08",function()
+            {
+                var SW=document.getElementById("SW");
+                // find the previous sibling of swimming
+                var sb1=SW.previousElementSibling;
+                alert(sb1.innerText);
+                // return nothing since SW has no next sibling node
+                // var sb2=SW.nextElementSibling;
+                // alert(sb2.innerText);
+
+                var BA=document.getElementById("BA");
+                // find the previous sibling of BA
+                // return nothing since BA has no previous sibling node
+                // var sb3=BA.previousElementSibling;
+                // alert(sb3.innerText);
+                var sb4=BA.nextElementSibling;
+                alert(sb4.innerText);
+            }
+            );
+
+            // read the value of "name"
+            setbtn("btn09",function()
+            {
+                var name=document.getElementById("username");
+                alert(name.value);
+            }
+            );
+
+            // change "name"
+            setbtn("btn10",function()
+            {
+                var name=document.getElementById("username");
+                name.value="Puzzle of my heart"
+            }
+            );
+        }
+    </script>
+</head>
+<body>
+    <div id='total'>
+        <div class='inner'>
+            <p>
+                Which city do you prefer?
+            </p>
+            <ul id='city'>
+                <li id='NY'>New York</li>
+                <li id='LD'>London</li>
+                <li id='PA'>Paris</li>
+                <li id='TO'>Toronto</li>
+            </ul>
+            <br>
+            <br>
+            <p>
+                Which sports do you like?
+            </p>
+            <ul id="sports">
+                <li id="BA">Basketball</li>
+                <li id="FO">Football</li>
+                <li id="TE">Tennis</li>
+                <li id="SW">Swimming</li>
+            </ul>
+            <br />
+            <br />
+        </div>
+
+        <div class='inner'>
+            Gender:
+            <!-- radio is a button with single choice -->
+            <input type="radio" name="gender" value="male"/>
+            Male
+            <input type="radio" name="gender" value="female"/>
+            Female
+            <br>
+            <br>
+            Name:
+            <input type="text" name="Name" id="username" value="JR"/>
+        </div>
+    </div>
+    <div id="btnList">
+        <div><button id="btn01">Find Node"NY"</button></div>
+        <div><button id="btn02">Find all Li Nodes</button></div>
+        <div><button id="btn03">Find all Nodes with name "gender"</button></div>
+        <div><button id="btn04">Find all city Nodes</button></div>
+        <div><button id="btn05">Find all 'city' children</button></div>
+        <div><button id="btn06">Find 'sports' first element child and last child</button></div>
+        <div><button id="btn07">Find the parent nodes</button></div>
+        <div><button id="btn08">Find the previous and next sibling nodes</button></div>
+        <div><button id="btn09">Read name</button></div>
+        <div><button id="btn10">Change name</button></div>
+    </div>        
+</body>
+</html>

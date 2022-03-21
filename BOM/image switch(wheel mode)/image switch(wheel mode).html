@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #exterior
+        {
+            width: 1300px;
+            height: 720px;
+            /* middle */
+            margin: 50px auto;
+            background-color: yellow;
+            padding: 50px 0;
+            position: relative;
+            overflow: hidden;/* hide the overflow part */
+        }
+        #imgList
+        {
+            list-style: none;
+            /* delete black dots; */
+            position: absolute;
+            /* left: -1300px; */
+        }
+        #imgList li
+        {
+        /* let photos float */
+            float: left;
+        /* set photo distance*/
+            margin: 0 10px;
+        }
+        #navDiv
+        {
+            position: absolute;
+            bottom: 0px;
+            left: 1000px;
+            /* navDiv.style.left=(exterior.offsetWidth-navDiv.offsetWidth)/2+"px";  this sentence let left:1000px does not work*/
+        }
+        #navDiv a
+        {
+            float: left;
+            width: 36px;
+            height: 36px;
+            background-color: red;
+            margin: 0 10px;
+            /* opacity: 0.5; */
+            /* normal way to set it transparent */
+            /* filter: alpha(opacity=50); */
+            /* IE8's way */
+        }
+        #navDiv a:hover
+        /* when the mouse approaches it, it changes color */
+        {
+            background-color:blue; 
+        }
+    </style>
+    <script type="text/javascript">
+
+        function getdata(obj,para)
+        // example: getdata(box1,"width")
+        {
+            if(window.getComputedStyle)
+            {
+                // use [] instead of .
+                // most of the browsers work
+                return getComputedStyle(obj,null)[para];
+            }
+            else
+            {
+                // IE8's way
+                return obj.currentStyle[para];
+            }
+        }
+
+        function move(obj,para,speed,target)
+            // obj:box1 para:'left' speed：30 target：800
+            {
+                obj.timer1=setInterval(function()
+                {
+                    var prevLeft=parseInt(getdata(obj,para));
+                    newLeft=prevLeft-speed;
+                    if(newLeft<target)
+                    {
+                        newLeft=target;
+                    }
+                    obj.style.left=newLeft+"px";
+                    if(newLeft==target)
+                    {
+                        clearInterval(obj.timer1);
+                    }
+                },10);
+            }
+
+        window.onload=function()
+        {
+            // get all li elements
+            var li=document.getElementsByTagName("li");
+            var imgList=document.getElementById("imgList");
+            // let all photos stay in one line
+            imgList.style.width=li.length*1300+"px";
+            var navDiv=document.getElementById("navDiv");
+            var exterior=document.getElementById("exterior");
+            // let navDiv stay in the middle
+            navDiv.style.left=(exterior.offsetWidth-navDiv.offsetWidth)/2+"px";
+            var allA=document.getElementsByTagName("a");
+            // set the index of these photos
+            var index=0;
+            allA[index].style.backgroundColor="blue";
+            // do not forget ""
+            var i=0;
+
+            function setA()
+            {
+                for(i=0;i<allA.length;i++)
+                {
+                    // the logic is:every time set the color of a is red, and the one we touch becomes blue
+                    // if we don't set the color to the default one, they just all become blue 
+                    allA[i].style.backgroundColor="";
+                }
+            };
+
+            function autochange(obj,para)
+            // para means the beginning photo number
+            {
+                var j=para;
+                // clearInterval(obj.timer);
+                obj.timer2=setInterval(function(){
+                    move(imgList,"left",6,-1300*j);
+                    if(j<li.length-1)
+                    {
+                       setA();
+                       allA[j].style.backgroundColor="blue";
+                    }
+                    if(j==li.length-1)
+                    // move to the last photo
+                    {
+                       setA();
+                       allA[0].style.backgroundColor="blue";
+                    }
+                    j=(j+1)%li.length;
+                },5000);
+            }
+
+            autochange(imgList,0);
+            // this autochange is the initial status
+
+            for(i=0;i<allA.length;i++)
+            {
+                allA[i].num=i;
+                allA[i].onclick=function()
+                {
+                    // alert(i); this does not work
+                    // since the program would execute for loop first then execute the content in the function
+                    // imgList.style.left=-this.num*1300+"px";
+                    clearInterval(imgList.timer2);
+                    // clear timer2 to cancel the initial autochange
+                    imgList.style.left=-1300*this.num+"px";
+                    setA();
+                    allA[this.num].style.backgroundColor="blue";
+                    autochange(imgList,this.num);
+                    // start the autochange again, begining from the image we point before
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="exterior">
+        <ul id="imgList">
+            <li><img src="KB666.jpg" alt=""></li>
+            <li><img src="KBMJ.jpg" alt=""></li>
+            <li><img src="Kobe.jpg" alt=""></li>
+            <li><img src="Lakers.jpg" alt=""></li>
+            <li><img src="KB666.jpg" alt=""></li>
+        </ul>
+
+        <div id="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+</html>

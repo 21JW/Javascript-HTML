@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function deletecontact()
+            {
+                // this is 'a'. The grandparent of 'a' is tr.
+                // we must use this instead of allElement[i]
+                var tr=this.parentNode.parentNode;
+                var name=tr.children[0].innerHTML;
+                // "this" is allElement[i]
+                var judge=confirm("Are you sure to delete this information?");
+                if(judge==true)
+                {
+                    tr.parentNode.removeChild(tr);// remove tr
+                }
+                return false;
+                // "return false" makes href not turning to another page 
+            }
+
+        window.onload=function()
+        {
+            var allElement=document.getElementsByTagName("a");
+            for(var i=0;i<allElement.length;i++)
+            {
+                allElement[i].onclick=deletecontact;
+            }
+
+            var addEmpButton=document.getElementById("addEmpButton");
+            addEmpButton.onclick=function()
+            {
+                // get name
+                var name=document.getElementById('empName').value;
+                var email=document.getElementById('email').value;
+                var salary=document.getElementById('salary').value;
+
+                var reg1=new RegExp(/^([A-z]+(\s)?)+$/);
+                var reg2=new RegExp(/\w+@\w+/);
+                var reg3=new RegExp(/^(\d)+$/);// only numbers
+
+                if(reg1.test(name)==false)
+                {
+                    alert("Please check the format of name!");
+                }
+                else if(reg2.test(email)==false)
+                {
+                    alert("Please check the format of email!");
+                }
+                else if(reg3.test(salary)==false)
+                {
+                    alert("Please check the format of salary!");
+                }
+                else
+                {
+                // template:
+                // <tr>
+                // <td>Tom</td>
+                // <td>tom@yahoo.com</td>
+                // <td>6000</td>
+                // <td><a href="deleteEmp?id=001">Delete</a></td>
+                // </tr>
+                    var tr=document.createElement("tr");
+                    tr.innerHTML="<td>"+name+"</td>"+"<td>"+email+"</td>"+"<td>"+salary+"</td>"+"<td><a href='javascript:;'>Delete</a></td>"
+                    var employeeTable=document.getElementById("employeeTable");
+                    var tbody=employeeTable.getElementsByTagName("tbody")[0];// return an array. it is better to add an index
+                    tbody.appendChild(tr);
+                    var a=tr.getElementsByTagName("a")[0];
+                    a.onclick=deletecontact;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <table id='employeeTable'>
+        <tr>
+            <th>name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@yahoo.com</td>
+            <td>6000</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jim</td>
+            <td>Jim@yahoo.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id=002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>Bob@yahoo.com</td>
+            <td>9000</td>
+            <td><a href="deleteEmp?id=003">Delete</a></td>
+        </tr>
+    </table>
+
+    <div id="formDiv">
+        <h4>add new contact</h4>
+        <table>
+            <tr>
+                <td class="word">name:</td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email:</td>
+                <td class="inp">
+                    <input type="text" name="email" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary:</td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmpButton">summit</button>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    
+</body>
+</html>

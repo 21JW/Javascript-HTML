@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #box1
+        {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color:red;
+            left: 0;
+        }
+        #box2
+        {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color:blue;
+            left: 0;
+            top: 300px;
+        }
+    </style>
+    <script type="text/javascript">
+        
+        function getdata(obj,para)
+        // example: getdata(box1,"width")
+        {
+            if(window.getComputedStyle)
+            {
+                // use [] instead of .
+                // most of the browsers work
+                return getComputedStyle(obj,null)[para];
+            }
+            else
+            {
+                // IE8's way
+                return obj.currentStyle[para];
+            }
+        }
+
+        function move(obj,para,speed,target)
+            // obj:box1 para:'left' speed：30 target：800
+            {
+                clearInterval(obj.timer);
+                if(para=="right")
+                {
+                    var actualspeed=-speed;
+                }
+                else if(para=="left")
+                {
+                    var actualspeed=speed;
+                }
+                obj.timer=setInterval(function()
+                {
+                    // getdata(obj,para) returns num+px 
+                    // parseInt deletes px
+                    var prevLeft=parseInt(getdata(obj,"left"));
+                    var newLeft=prevLeft+actualspeed;
+                    if((newLeft>target&&actualspeed>0)||(newLeft<target&&actualspeed<0))
+                    {
+                        newLeft=target;
+                    }
+                    obj.style.left=newLeft+"px";
+                    // let box1 stops at targetpx
+                    if(newLeft==target)
+                    {
+                        clearInterval(obj.timer);
+                    }
+                },10);
+            }
+        window.onload=function()
+        {
+            var box1=document.getElementById("box1");
+            var btn01=document.getElementById("btn01");
+            var box2=document.getElementById("box2");
+            var btn03=document.getElementById("btn03");
+            btn01.onclick=function(){move(box1,"left",5,800)};
+            // cautions:do not write it as btn01.ondblclick=move();
+            btn02.onclick=function(){move(box1,"right",8,0)};
+
+            btn03.onclick=function(){move(box2,"left",2,700)};
+            btn05.onclick=function(){move(box2,"right",12,0)};
+
+        }
+    </script>
+    
+</head>
+<body>
+    <button id="btn01">red box turns right</button>
+    <button id="btn02">red box turns left</button>
+    <br/><br/>
+    <button id="btn03">blue box turns right</button>
+    <button id="btn05">blue box turns left</button>
+
+    <br>
+    <br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+</body>
+</html>

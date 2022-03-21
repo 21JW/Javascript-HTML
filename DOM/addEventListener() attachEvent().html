@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function bind(obj,evenStr,callback)
+        // aim: an Element with multiple events
+        // make a function that suits every browser
+        {
+            if(obj.addEventListener)
+            {
+                obj.addEventListener(evenStr,callback,false);
+                // IE8 does not work
+            }
+            else
+            {
+                obj.attachEvent("on"+evenStr,function()
+                {
+                    callback.call(obj);
+                });
+                // the IE8's way
+            }
+        }
+        window.onload=function()
+        {
+            var btn01=document.getElementById("btn01");
+            // addEventListener allows one Element with different events(IE8 does not work)
+            bind(btn01,"click",function()
+            {
+                alert("This is a click function")
+                // caution:do not add a';' here
+            })
+
+            bind(btn01,"keypress",function()
+            {
+                alert("This is a keypress function")
+            })
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">btn01</button>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #box1
+        {
+            width: 60px;
+            height: 60px;
+            background-color: red;
+            /* if we want the box moves, setting the position: absolute is necessary; */
+            position: absolute; 
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function()
+        {
+            var box1=document.getElementById("box1");
+            // box1.onmousemove=function(event) is a wrong example(box1 can only turn right and down) 
+            document.onmousemove=function(event)
+            {
+                // alert("Reach the target");
+                // pageX and pageY IE8 does not work
+                box1.style.top=event.pageY+"px";
+                box1.style.left=event.pageX+"px";
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>

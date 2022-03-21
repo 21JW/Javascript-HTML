@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var reg=new RegExp("a");
+        // alert(reg.test("bcabc")); true
+
+        reg=/[ab]/;
+        // a or b alert(reg.test("cn")); "an"=true "cn"=false
+
+        // split function
+        var str="1a2b3C4d5e6F"
+        // [A-z] meets all characters without checking capital
+        var result=str.split(/[A-z]/);
+        // alert(result);
+
+        // search function
+        str="hello abc hello abc";
+        result=str.search("abc");
+        // alert(result); result is 6
+        // search function can only return the first one
+        result=str.search("abcd");
+        // alert(result);
+        // result is -1
+
+        // match function
+        str="1a2B3c5e8A9d";
+        result=str.match(/[a-z]/g);// g means global
+        // alert(result);
+        // a,c,e,d
+        result=str.match(/[a-z]/gi);
+        // alert(result);
+        // a,B,c,e,A,d  i means not regarding capital
+        result=str.match(/[0-9]/g);
+        // alert(result);// 1,2,3,5,8,9
+
+        // replace function
+        str="1a2a3a6B7A";
+        result=str.replace('a',"R");// only replace the first "a"
+        // alert(result);
+        result=str.replace(/a/gi,"R");// all a and A become R
+        // alert(result);
+
+        reg=/ab{1,3}c/;// means allowing 1 to 3 "b"
+        // alert(reg.test("abbbc"));// true
+        reg=/ab?c/;
+        // means allowing 0 to 1 'b'
+        // alert(reg.test("ac"));// true
+
+        // check the beginning and the ending
+        reg=/^(ab)c/;// must begin with "ab";
+        // alert(reg.test("aabc"));// false
+        // alert(reg.test("abc"));// true
+
+        reg=/a+b*(bc)$/;
+        // alert(reg.test("aac"));// false
+        // alert(reg.test("aaabc"));//true
+
+        // find specific string
+        // find 'child' but not 'children'
+        reg=/\bchild\b/;
+        str="children child";
+        result=str.search(reg);
+        // alert(result);// 9
+
+        // delete all spaces
+        str="   hello  UW   ";
+        str1=str.replace(/\s/g,'');
+        // alert(str1);
+
+        // delete the beginning spaces
+        str2=str.replace(/^\s*/,'');
+        // alert(str2);
+
+        // delete the ending spaces
+        str3=str.replace(/\s*$/,'');
+        alert(str3);        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

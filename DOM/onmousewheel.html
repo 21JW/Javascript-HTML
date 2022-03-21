@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #box1
+        {
+            width: 100px;
+            height: 100px;
+            background-color: bisque;
+        }
+    </style>
+    <script type="text/javascript">
+
+         function bind(obj,evenStr,callback)
+        // aim: an Element with multiple events
+        // make a function that suits every browser
+            {
+            if(obj.addEventListener)
+              {
+                obj.addEventListener(evenStr,callback,false);
+                // IE8 does not work
+              }
+            else
+              {
+                obj.attachEvent("on"+evenStr,function()
+                 {
+                    callback.call(obj);
+                 });
+                // the IE8's way
+               }
+            }
+        window.onload=function()
+        {
+            var box1=document.getElementById("box1");
+            box1.onmousewheel=function(event)
+            // onmousewheel: firefox does not work
+            {
+                if(event.wheelDelta>0||event.detail<0)
+                // scroll up charactristic
+                // event.wheelDelta (suits normal browsers) event.detail(suits firefox)
+                {
+                    if(box1.clientHeight>10)
+                    {
+                        box1.style.height=box1.clientHeight-10+"px";
+                    }
+                    // function:when mouse scrolls up, box1 height decreases
+                }
+                else
+                {
+                    box1.style.height=box1.clientHeight+10+"px";
+                    // function:when mouse scrolls down, box1 height increases
+                }
+
+                // when a page is long, mouse scrolls will move the page instead of changing the box
+                // return false can delete this default function
+                event.preventDefault&&event.preventDefault();
+                // firefox's way to delete default function
+                // because for event.preventDefault, IE8 does not work. We have to judge it first.
+
+                return false;
+                // the normal way to delete default function
+
+            }
+            bind(box1,"DOMMouseScroll",box1.onmousewheel);
+            // firefox's way
+        }
+    </script>
+</head>
+<body style="height: 2000px;">
+    <div id="box1"></div>
+</body>
+</html>

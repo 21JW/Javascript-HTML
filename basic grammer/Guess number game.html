@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var random=Math.random()*100;
+        random=Math.round(random);
+        alert('Welcome to "Guess Number Game"!\nPlease provide a number that is from 0 to 100.\nYou have only ten chances!');
+        var i=10;
+        while(i>=1)
+        {
+           num=prompt('Please input a number:\nNoctice: You have '+i+' chances!\n');
+           if(num==random)
+           {
+               alert('Congratulations! You win!');
+               break;
+           }
+           else if((num>random)&&(num<101))
+           {
+               alert('Please try a number than is less than it.');
+           } 
+           else if((num<random)&&(num>-1))
+           {
+               alert('Please try a number than is greater than it.');
+           }
+           else
+           {
+               alert('Error:Input is out of range!');
+           }
+           i--;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

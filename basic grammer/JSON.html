@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+    <script type="text/javascript">
+        // JSON: Javascript Object Notation
+        // the obj in JS, other languages can not recognize
+        // JSON is a special string that let other languages recognize JS's obj
+        var obj='{"name":"KD","age":"30","ocupation":"athlete"}';
+        var arr='[1,2,3,"hello",true]';
+        // JSON.parse changes JSON into a js obj;
+        var result1=JSON.parse(obj);
+        alert(result1.ocupation);
+        var result2=JSON.parse(arr);
+        alert(result2[3]);
+
+        // JSON.stringify changes obj into a JSON(string);
+        var JS=JSON.stringify(result1);
+        alert(typeof(JS)+"\n"+JS);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

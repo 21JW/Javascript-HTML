@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .b1
+        {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .b2
+        {
+            width: 200px;
+            height: 120px;
+            background-color: blue;
+        }
+        .b3
+        {
+            height: 50px;
+            background-color:yellow;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function()
+        {
+            var box1=document.getElementById("box1");
+            var btn01=document.getElementById("btn01");
+            var btn02=document.getElementById("btn02");
+            var btn03=document.getElementById("btn03");
+
+            function judgeClass(obj,cls)
+            // judge whether obj includes cls
+            {
+                var reg=new RegExp("\\b"+cls+"\\b");
+                return reg.test(obj.className);
+            }
+
+            function addClass(obj,cls)
+            {
+                var judge=judgeClass(obj,cls);
+                if(judge==true)
+                {;}
+                else
+                {
+                   obj.className+=" "+cls;
+                }  
+            }
+
+            function removeClass(obj,cls)
+            {
+                var reg=new RegExp("\\b"+cls+"\\b");
+                obj.className=obj.className.replace(reg,"");
+            }
+
+            btn01.onclick=function()
+            {
+                box1.className="b2";
+                // change features by class
+            }
+            btn02.onclick=function()
+            {
+                addClass(box1,"b3");
+                // remain the feature of b2 and change it into b3
+            }
+
+            btn03.onclick=function()
+            {
+                removeClass(box1,"b3");
+                // remove the features of b3
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <button id="btn01">change box1</button>
+    <button id="btn02">combine the features of b2 and b3</button>
+    <button id="btn03">remove the features of b3</button>
+    <br><br/>
+    <div id="box1" class="b1"></div>
+
+</body>
+</html>

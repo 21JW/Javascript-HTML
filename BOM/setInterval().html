@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload=function()
+        {
+            var num=1;
+            var count=document.getElementById("count");
+            // setInterval() enables a function to be executed with an interval
+            // format: setInterval(function(){},time) time:1000===1s===1000ms
+            var timer=setInterval(function()
+            {
+                count.innerHTML=num++;
+                if(num==11)
+                {
+                    // after 10s, turn off the timer
+                    clearInterval(timer);
+                }
+            },
+                1000)
+        }
+    </script>
+    
+</head>
+<body>
+    <h3 id="count">0</h3>
+</body>
+</html>

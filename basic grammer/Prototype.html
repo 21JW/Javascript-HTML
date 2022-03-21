@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Person(name,age,gender)
+        {
+            this.name=name;
+            this.age=age;
+            this.gender=gender;
+        }
+        var Tim=new Person('Tim',28,'Male');
+        var Jim=new Person('Jim',16,'Male');
+        var Sue=new Person('Sue',22,'Female');
+        Person.prototype.greeting=function()
+        {
+            alert('Hi!I am '+this.name+'. I am '+this.age+' years old.\n');
+        }
+        Tim.greeting();
+        var arr=[Tim,Jim,Sue];
+        var arr2=[];
+        var i=0;
+        // arr2 collects people who are adults
+        for(i=0;i<arr.length;i++)
+        {
+            if(arr[i].age>=18)
+            {
+                arr2[arr2.length]=arr[i];
+            }
+        }
+        alert('The following are adults:\n');
+        for(i=0;i<arr2.length;i++)
+        {
+            alert(arr2[i].name+'\n');
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

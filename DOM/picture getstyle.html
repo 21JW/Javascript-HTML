@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #box1{
+            width: 10px;
+            height: 20px;
+            background-color: blue;
+        }
+    </style>
+    <script type="text/javascript">
+
+        function getdata(obj,para)
+        {
+            if(window.getComputedStyle)
+            {
+                // use [] instead of .
+                // most of the browsers work
+                return getComputedStyle(obj,null)[para];
+
+            }
+            else
+            {
+                // IE8's way
+                return obj.currentStyle[para];
+            }
+        }
+
+        window.onload=function()
+        {
+            var btn01=document.getElementById("btn01");
+            var btn02=document.getElementById("btn02");
+            var btn03=document.getElementById("btn03");
+            var btn04=document.getElementById("btn04");
+
+
+            var box1=document.getElementById("box1");
+            btn01.onclick=function()
+            {
+                box1.style.width='200px';
+                box1.style.height='200px';
+                box1.style.backgroundColor='red';
+            }
+
+            // Read method 1:currentStyle
+
+            btn02.onclick=function()
+            {
+                // currentStyle only IE works
+                alert(box1.currentStyle.width);
+            }
+
+            // Read method 2:getComputedStyle()
+
+            btn03.onclick=function()
+            {
+                // use getComputedStyle() to get current data 
+                // IE8 does not work
+                alert(getComputedStyle(box1,null).width);
+            }
+
+            btn04.onclick=function()
+            {
+                // use getComputedStyle() to get current data 
+                // IE8 does not work
+                alert(getdata(box1,"width"));
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <button id="btn01">change</button>
+    <button id="btn02">Read Method1</button>
+    <button id="btn03">Read Method2</button>
+    <button id="btn04">Read Function Test</button>
+
+
+    <!-- the graph will use the parameter here -->
+    <div id="box1" style="height: 30px;background-color: aquamarine;"></div>
+    
+</body>
+</html>

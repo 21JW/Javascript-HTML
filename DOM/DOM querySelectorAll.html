@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function()
+        {
+            // the way to find Element "body"
+            var body=document.body;
+            // alert(body.innerHTML);
+            // the way to find Element "html"
+            var html=document.documentElement;
+            // alert(html.innerHTML);
+
+            // getElementsByClassName only IE9+ work
+            // var box1=document.getElementsByClassName("box01");
+
+            var box1=document.querySelectorAll(".box1");// find by class name (do not forget "." before box)
+            for(var i=0;i<box1.length;i++)
+            {
+                alert(box1[i].id);
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <div class="box1" id="JR">Test1</div>
+    <div class="box1" id="TD">Test2</div>
+    <div class="box1" id="KD">Test3</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Writing a button Method1: -->
+    <button id='btn1' ondblclick="alert('This is the first way of writing a button')">I am the first button</button>
+    <!-- Writing a button Method2: -->
+    <button id='btn2'>I am the second button</button>
+    <script type="text/javascript">
+    var btn2=document.getElementById('btn2');
+    // rename btn2
+    btn2.innerHTML='I am the second button after modification';
+    btn2.onclick=function()
+    {
+        alert("This is the second way of writing a button");
+    }
+
+    </script>
+    
+</body>
+</html>

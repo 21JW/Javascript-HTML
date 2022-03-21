@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var mode=prompt('Please choose a kind of calculation:\n1.Plus\n2.Minus\n3.Multiply\n4.Divide\n');
+        var Num1=prompt('Please input the first number:');
+        var Num2=prompt('Please input the second number:');
+        var result=0;
+        if(mode==1)
+        {
+            result=Num1+Num2;
+            alert('The result is:'+result+'\n');
+        }
+        else if(mode==2)
+        {
+            result=Num1-Num2;
+            alert('The result is:'+result+'\n');
+        }
+        else if(mode==3)
+        {
+            result=Num1*Num2;
+            alert('The result is:'+result+'\n');
+        }
+        else if(mode==4)
+        {
+            result=Num1/Num2;
+        }
+        else
+        {
+            alert('Error: Please check your input.');
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
