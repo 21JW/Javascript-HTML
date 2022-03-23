@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person
+        {
+            constructor(name,age)
+            {
+                this.name=name;
+                this.age=age;
+            }
+            information()
+            // it is not a function
+            {
+                alert('Hi! I am '+this.name+'. I am '+this.age+" years old.");
+            }
+        }
+        class Student extends Person
+        // Student inherits Person
+        {
+            constructor(name,age,university)
+            {
+                super(name,age);
+                // super is necessary when extends is used 
+                this.university=university;
+            }
+            information()
+            {
+                alert('Hi! I am '+this.name+'. I am '+this.age+" years old. I am from "+this.university+".");
+            }
+        }
+        const p1=new Person('KD',30);
+        p1.information();
+        const p2=new Student("JR",26,"UW");
+        p2.information();
+
+
+    </script>
+</body>
+</html>
