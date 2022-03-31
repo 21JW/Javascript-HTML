@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        {
+            // example 1:
+            const a=10;
+            // a=20;
+            // a=20 does not work since it cannot be changed
+        }
+        // alert(a) doesn't work since a is a local variable
+        // alert(a);
+
+        // example 2:
+        const b=[1,2,3,4,5];
+        b.push(6);
+        // it is ok to change b since the address of this array does not change
+        alert(b);
+
+        // example 3:
+        const athlete=["Durant","Jordon","Duncan"];
+        let[KD,MJ,TD]=athlete;
+        alert(KD);
+
+    </script>
+</body>
+</html>
