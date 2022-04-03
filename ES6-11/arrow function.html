@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Example 1: How to use arrow function
+
+        // normal way
+        // let fn=function(a,b)
+        // {
+        //     return a+b;
+        // }
+
+        fn=(a,b)=>
+        {
+            return a+b;
+        }
+
+        let result=fn(1,2);
+        // alert(result);
+
+        // Example 2: "this" in static function is static
+        // (still points to window)
+        function getName()
+        {
+            alert(this.name);
+        } 
+
+        let getName2=()=>
+        {
+            alert(this.name);
+        }
+
+        window.name="Durant";
+        const player=
+        {
+            name:"KD"
+        }
+
+        // In normal way,"this" points to window
+        // getName();
+        // Durant
+        // getName2();
+        // Durant
+
+        getName.call(player);
+        // KD points to player
+        getName2.call(player);
+        // Durant (still points to window)(point to the place where anounced)
+
+        // Example 3: arrow function cannot work as a constructor
+
+        // let Person=(name,age)=>
+        // {
+        //     this.name=name;
+        //     this.age=age;
+        // }
+        // let p1=new Person("KD",30);
+        // alert(p1);
+
+        // error: Person is not a constructor
+
+
+
+    </script>
+</body>
+</html>
